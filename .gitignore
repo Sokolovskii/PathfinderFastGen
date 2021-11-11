@@ -1,0 +1,7 @@
+/.vs
+
+PathfinderFastGen.DAL/bin
+PathfinderFastGen.DAL/obj
+
+PathfinderFastGen.Models/bin
+PathfinderFastGen.Models/obj

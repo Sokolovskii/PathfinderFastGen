@@ -14,15 +14,6 @@ namespace PathfinderFastGen.Models.Items
 		public float Weight { get; set; }
 		public string Description { get; }
 		public ItemCategory ItemCategory { get; }
-		public ItemBaseModel(int id, string name, float price, float weight, string description, ItemCategory itemCategory)
-		{
-			Id = id;
-			Name = name;
-			Price = price;
-			Weight = weight;
-			Description = description;
-			ItemCategory = itemCategory;
-		}
 	}
 
 	public enum ItemCategory

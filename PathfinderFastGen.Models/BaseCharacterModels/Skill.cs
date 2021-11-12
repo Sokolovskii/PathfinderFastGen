@@ -3,12 +3,12 @@
 	public class Skill : BaseStat
 	{
 		public override int Value{ get; set; }
-		public (string charName, int charValue) LinkedCharacteristic { get; set; }
+		public Characteristic LinkedChar { get; set; }
 		public int Bonus { get; set; }
 		public bool ClassedSkill { get; }
-		public Skill(string linkedCharacteristicName, int linkedCharacteristicValue, bool classedSkill, int bonus, string name, int value)
+		public Skill(Characteristic linkedChar, bool classedSkill, int bonus, string name, int value)
 		{
-			LinkedCharacteristic = (linkedCharacteristicName, linkedCharacteristicValue);
+			LinkedChar = linkedChar;
 			ClassedSkill = classedSkill;
 			Bonus = bonus;
 			Name = name;
@@ -19,9 +19,9 @@
 		{
 			if (ClassedSkill)
 			{
-				return Value + Bonus + LinkedCharacteristic.charValue + 3;
+				return Value + Bonus + LinkedChar.Modificator + 3;
 			}
-			return LinkedCharacteristic.charValue;
+			return LinkedChar.Modificator;
 		}
 	}
 }

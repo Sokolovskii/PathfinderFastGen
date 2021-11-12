@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PathfinderFastGen.Models.Equipment.Shells
+namespace PathfinderFastGen.Models.Items.Artefact
 {
-	class ShellModel
+	class ArtefactModel
 	{
 	}
 }

@@ -6,6 +6,9 @@ namespace PathfinderFastGen.Models.BaseCharacterModels
 {
 	class Challenge : BaseStat
 	{
-		public Challenge(string name, int value) : base(name, value){}
+		public Challenge(string name, int value)
+		{
+
+		}
 	}
 }

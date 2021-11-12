@@ -2,29 +2,19 @@
 {
 	public class Characteristic : BaseStat
 	{
-		public Characteristic(string name, int value) : base(name, value) 
+		public override int Value {
+			get => Value;
+			set {
+				Value = value;
+				CountModificator();
+			}
+		}
+		public Characteristic(string name, int value)
 		{
-			CountModificator();
+			Name = name;
+			Value = value;
 		}
 		public int Modificator { get; private set; }
-		public void Add(int value) 
-		{
-			Value += value;
-			CountModificator();
-		}
-		public void Sub(int value) 
-		{
-			if(Value - value > 1)
-			{
-				Value -= value;
-			}
-			else
-			{
-				Value = 1;
-			}
-			CountModificator();
-		}
-
 		private void CountModificator() 
 		{
 			if(Value % 2 == 0)
@@ -36,7 +26,5 @@
 				Modificator = (Value - 11) / 2;
 			}
 		}
-
-
 	}
 }

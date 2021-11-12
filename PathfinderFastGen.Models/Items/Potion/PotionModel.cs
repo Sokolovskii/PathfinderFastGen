@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PathfinderFastGen.Models.Equipment.Food
+namespace PathfinderFastGen.Models.Items.Potion
 {
-	class FoodModel
+	class PotionModel
 	{
 	}
 }

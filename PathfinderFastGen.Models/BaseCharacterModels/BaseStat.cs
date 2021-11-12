@@ -1,14 +1,30 @@
-﻿namespace PathfinderFastGen.Models.BaseCharacterModels
-{
-	public class BaseStat
-	{
-		public string Name { get; }
-		public int Value { get; set; }
+﻿using System.Linq;
 
-		public BaseStat(string name, int value)
+namespace PathfinderFastGen.Models.BaseCharacterModels
+{
+	public abstract class BaseStat
+	{
+		public string Name { get; set; }
+		public virtual int Value
 		{
-			Name = name;
-			Value = value;
+			get => Value;
+			set 
+			{
+				Value = value;
+			}
+		}
+
+		public void Add(params int[] values)
+		{
+			Value += values.Sum();
+		} 
+
+		public void Sub(params int[] values)
+		{
+			if ((Value - values.Sum()) >= 1)
+				Value -= values.Sum();
+			else
+				Value = 1;
 		}
 	}
 }

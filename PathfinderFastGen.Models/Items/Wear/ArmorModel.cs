@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PathfinderFastGen.Models.Equipment.Medicine
+namespace PathfinderFastGen.Models.Items.Wear
 {
-	class MedicineModel
+	class ArmorModel
 	{
 	}
 }

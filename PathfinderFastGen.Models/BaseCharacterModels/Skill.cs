@@ -1,27 +1,31 @@
 ﻿namespace PathfinderFastGen.Models.BaseCharacterModels
 {
-	public class Skill : BaseStat
+	public class Skill : IStat
 	{
-		public override int Value{ get; set; }
+		public BaseStat BaseChar { get; set; }
 		public Characteristic LinkedChar { get; set; }
 		public int Bonus { get; set; }
 		public bool ClassedSkill { get; }
-		public Skill(Characteristic linkedChar, bool classedSkill, int bonus, string name, int value)
+		public Skill(string name, Characteristic linkedChar, bool classedSkill, int bonus)
 		{
+			BaseChar = new BaseStat(name);
 			LinkedChar = linkedChar;
 			ClassedSkill = classedSkill;
 			Bonus = bonus;
-			Name = name;
-			Value = value;
 		}
 
 		public int GetSum()
 		{
 			if (ClassedSkill)
 			{
-				return Value + Bonus + LinkedChar.Modificator + 3;
+				return BaseChar.Value + Bonus + LinkedChar.Modificator + 3;
 			}
 			return LinkedChar.Modificator;
+		}
+
+		public void ChangeBonus(int value)
+		{
+			Bonus += value;
 		}
 	}
 }

@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Skills\**" />
+    <EmbeddedResource Remove="Skills\**" />
+    <None Remove="Skills\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="MetaParameters\" />
-    <Folder Include="Features\" />
-    <Folder Include="Skills\" />
   </ItemGroup>
 
 </Project>

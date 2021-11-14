@@ -2,11 +2,11 @@
 {
 	public class Characteristic : IStat
 	{
-		public IStat BaseChar { get; set; }
+		public BaseStat BaseChar { get; set; }
 		public int Modificator => CountModificator();
 		public Characteristic(string name, int value)
 		{
-			BaseChar = new IStat(name, value);
+			BaseChar = new BaseStat(name, value);
 		}
 		private int CountModificator() 
 		{

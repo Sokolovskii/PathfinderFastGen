@@ -1,14 +1,15 @@
-﻿namespace PathfinderFastGen.Models.BaseCharacterModels
+﻿using System.Linq;
+
+namespace PathfinderFastGen.Models.BaseCharacterModels
 {
-	public class Skill : IStat
+	public class Skill : Stat, IEditable
 	{
-		public BaseStat BaseChar { get; set; }
 		public Characteristic LinkedChar { get; set; }
 		public int Bonus { get; set; }
 		public bool ClassedSkill { get; }
 		public Skill(string name, Characteristic linkedChar, bool classedSkill, int bonus)
 		{
-			BaseChar = new BaseStat(name);
+			BaseChar = new BaseStat(name, 0);
 			LinkedChar = linkedChar;
 			ClassedSkill = classedSkill;
 			Bonus = bonus;
@@ -23,9 +24,9 @@
 			return LinkedChar.Modificator;
 		}
 
-		public void ChangeBonus(int value)
+		public void EditStat(params int[] values)
 		{
-			Bonus += value;
+			Bonus += values.Sum();
 		}
 	}
 }

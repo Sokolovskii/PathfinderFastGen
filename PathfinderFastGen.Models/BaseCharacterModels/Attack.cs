@@ -1,22 +1,19 @@
 ﻿namespace PathfinderFastGen.Models.BaseCharacterModels
 {
-	class Attack : IStat
+	class Attack : Stat
 	{
-		public BaseStat BaseChar { get; }
-
-		public int[] BonusVal { get; }
-
+		public (int secondVal, int thirdVal) BonusVal { get; }
 		public Characteristic Strength { get; }
 		public Characteristic Dexterity { get; }
 		public Size Size { get; }
 
-		public Attack(string name, int firstVal, int secondVal, int thirdVal, Characteristic strength, Characteristic dexterity, Size size)
+		public Attack(int firstVal, int secondVal, int thirdVal, Characteristic strength, Characteristic dexterity, Size size)
 		{
-			BaseChar = new BaseStat(name, firstVal);
-			BonusVal = new int[2] {secondVal, thirdVal};
+			BaseChar = new BaseStat(CharacteristicKeys.Attack, firstVal);
+			BonusVal = (secondVal, thirdVal);
 			Strength = strength;
 			Dexterity = dexterity;
-			Size = Size;
+			Size = size;
 		}
 
 		public int GetMBM()

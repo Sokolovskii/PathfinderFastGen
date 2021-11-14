@@ -1,16 +1,27 @@
 ﻿namespace PathfinderFastGen.Models.BaseCharacterModels
 {
-	public class Characteristic : IStat
+	public class Characteristic : Stat, IEditable
 	{
-		public BaseStat BaseChar { get; set; }
-		public int Modificator => CountModificator();
+		public int Modificator { get; set; }
 		public Characteristic(string name, int value)
 		{
 			BaseChar = new BaseStat(name, value);
+			CountModificator();
 		}
-		private int CountModificator() 
+		private void CountModificator() 
 		{
-			return BaseChar.Value % 2 == 0 ? (BaseChar.Value - 10) / 2 : (BaseChar.Value - 11) / 2;
+			if(BaseChar.Value % 2 == 0)
+			{
+				Modificator = (BaseChar.Value - 10) / 2;
+				return;
+			}
+			Modificator = (BaseChar.Value - 11) / 2;
+		}
+
+		public void EditStat(params int[] values)
+		{
+			BaseChar.Change(values);
+			CountModificator();
 		}
 	}
 }

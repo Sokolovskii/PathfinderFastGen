@@ -1,39 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Linq;
 
 namespace PathfinderFastGen.Models.BaseCharacterModels
 {
-	public class Armor : IStat
+	public class Armor : Stat, IEditable
 	{
-		public BaseStat BaseChar { get; }
 		public Characteristic Dexterity { get; }
 		public Size Size { get; }
 		public int Bonus { get; set; }
-		public int NaturalArmor { get; set; }
 		
-		public Armor(string name, int naturalArmor, int bonus, Characteristic dexterity, Size size)
+		public Armor(int bonus, Characteristic dexterity, Size size)
 		{
-			BaseChar = new BaseStat(name);
+			BaseChar = new BaseStat(CharacteristicKeys.Armor, 0);
 			Dexterity = dexterity;
-			NaturalArmor = naturalArmor;
 			Bonus = bonus;
 			Size = size;
 		}
-
 		public int GetKB()
 		{
 			switch (Size)
 			{
 				case (Size.Small):
-					return Dexterity.Modificator + NaturalArmor + Bonus + 1;
+					return Dexterity.Modificator + Bonus + 1;
 				case (Size.Middle):
 				default:
-					return Dexterity.Modificator + NaturalArmor + Bonus;
+					return Dexterity.Modificator + Bonus;
 				case (Size.Big):
-					return Dexterity.Modificator + NaturalArmor + Bonus - 1; 			
+					return Dexterity.Modificator + Bonus - 1; 			
 			}
 			
+		}
+
+		public void EditStat(params int[] values)
+		{
+			Bonus += values.Sum();
 		}
 	}
 }

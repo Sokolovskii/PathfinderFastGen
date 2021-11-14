@@ -1,26 +1,21 @@
-﻿namespace PathfinderFastGen.Models.BaseCharacterModels
+﻿using System.Linq;
+
+namespace PathfinderFastGen.Models.BaseCharacterModels
 {
-	class Challenge : IStat
-	{
-		public BaseStat BaseChar { get; set; }
+	class Challenge : Stat, IEditable
+	{ 
 		public Characteristic LinkedChar{ get; set; }
 		public int Bonus { get; set; }
-		public int MagicBonus { get; set; }
 
-		public Challenge(string name, int value)
+		public Challenge(string name, int value, Characteristic linkedChar)
 		{
-			BaseChar = new BaseStat(name, value);
+			BaseChar = new BaseStat(name, value, 0);
+			LinkedChar = linkedChar;
 		}
 
-		public void ChangeBonus(int value)
+		public void EditStat(params int[] values)
 		{
-			Bonus += value;
+			Bonus += values.Sum();
 		}
-
-		public void ChangeMagicBonus(int value)
-		{
-			MagicBonus += value;
-		}
-
 	}
 }
